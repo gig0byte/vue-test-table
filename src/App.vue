@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar v-if="isLogined" max-height="60px">
+      <v-toolbar-title
+        >You`re logined as <b>{{ userName }} </b>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn tile @click="logout">
+        <v-icon>mdi-logout</v-icon>
+        Logout
+      </v-btn>
+    </v-app-bar>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  computed: {
+    ...mapGetters({
+      isLogined: "isLogined",
+      userName: "userName",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      logout: "logout",
+    }),
+    // logout: function () {
+    //   this.$store.dispatch("logout").then(() => {
+    //     this.$router.push("/");
+    //   });
+    // },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
