@@ -35,7 +35,7 @@ export default new Vuex.Store({
   },
 
   actions: {
-    login({ commit, getters  }, credentials) {
+    login({ commit  }, credentials) {
       return new Promise((resolve, reject) => {
         // переданные логин/пароль
         let sUserName = credentials.username,

@@ -3,8 +3,6 @@ import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 
 import store from "../store/index.js"
-import About from "../views/About.vue"
-import Login from "../components/Login.vue"
 import Table from "../components/Table.vue"
 import NotFound from "../components/NotFound.vue"
 
@@ -18,22 +16,12 @@ const routes = [
     component: Home
   },
   {
-    path: "/login",
-    name: "login",
-    component: Login
-  },
-  {
     path: "/table",
     name: "table",
     component: Table,
     meta: {
       requiresAuth: true
     }
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: About
   },
   {
     path: "/404",
