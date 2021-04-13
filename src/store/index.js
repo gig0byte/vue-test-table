@@ -62,13 +62,13 @@ export default new Vuex.Store({
               
               // если юзер был найден
               if (sFindedUsername) {
-                let oFindedUser = oData[sFindedUsername],
-                  sFindedPassword = oFindedUser.pass;
+                let oFindedUser = oData[sFindedUsername];
                 
                 // если совпали пароли
-                if (sFindedPassword === sPassword) {
+                if (oFindedUser.pass === sPassword) {
                   commit("auth_success", sFindedUsername);
                   resolve();
+
                 } else {
                   commit("auth_error", oErrorTexts["wrong"]);
                   reject(oErrorTexts["wrong"]);
@@ -97,7 +97,7 @@ export default new Vuex.Store({
 
         localStorage.removeItem("loggedUser");
 
-        resolve()
+        resolve();
       })
     }
   },

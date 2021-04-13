@@ -29,15 +29,17 @@ export default {
       userName: "userName",
     }),
   },
+
   methods: {
     ...mapActions({
-      logout: "logout",
+      vuexLogout: "logout",
     }),
-    // logout: function () {
-    //   this.$store.dispatch("logout").then(() => {
-    //     this.$router.push("/");
-    //   });
-    // },
+
+    logout: function () {
+      this.vuexLogout().then(() => {
+        this.$router.push("/");
+      });
+    },
   },
 };
 </script>

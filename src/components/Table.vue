@@ -28,9 +28,8 @@
               counter
             ></v-text-field>
           </template>
-        </v-edit-dialog>
-      </template></v-data-table
-    >
+        </v-edit-dialog> </template
+    ></v-data-table>
     <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
       {{ snackText }}
 
@@ -56,7 +55,8 @@
             <v-container>
               <v-row>
                 <v-col cols="12" sm="6">
-                  <v-select v-model="selectedStatus"
+                  <v-select
+                    v-model="selectedStatus"
                     :items="statuses"
                     label="Select new status"
                     required
@@ -115,18 +115,18 @@ export default {
   computed: {
     selectionCheck() {
       let statusSelected = !!this.selectedStatus,
-      selectedStatusesCheck = false,
-      statusesOfSelected = [];
+        selectedStatusesCheck = false,
+        statusesOfSelected = [];
 
-      this.selected.map(oSelected => {
+      this.selected.map((oSelected) => {
         statusesOfSelected.push(oSelected.status);
       });
 
       statusesOfSelected = new Set(statusesOfSelected);
 
-
       if (statusesOfSelected.size === 1) {
         selectedStatusesCheck = this.selected[0].status !== this.selectedStatus;
+        
       } else {
         selectedStatusesCheck = true;
       }
@@ -136,7 +136,7 @@ export default {
   },
   methods: {
     createRandomWord: (iLength) => {
-      var aConsonants = "bcdfghjlmnpqrstv".split(""),
+      let aConsonants = "bcdfghjlmnpqrstv".split(""),
         aVowels = "aeiou".split(""),
         rand = function (limit) {
           return Math.floor(Math.random() * limit);
@@ -144,7 +144,7 @@ export default {
         word = "";
 
       for (var i = 0; i < iLength / 2; i++) {
-        var sRandConsonant = aConsonants[rand(aConsonants.length)],
+        let sRandConsonant = aConsonants[rand(aConsonants.length)],
           sRandVowel = aVowels[rand(aVowels.length)];
 
         word += i === 0 ? sRandConsonant.toUpperCase() : sRandConsonant;
@@ -186,6 +186,7 @@ export default {
       this.dialogClose();
     },
   },
+  // генерируем данные для таблицы перед Mount компонента
   beforeMount() {
     let aStatuses = this.statuses,
       iMin = 10,
